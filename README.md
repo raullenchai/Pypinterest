@@ -1,4 +1,4 @@
-#pinpinpin: An Unofficial (and Somewhat Dirty) Python Wrapper for Pinterest#
+#Pypinpinpin: An Unofficial (and Somewhat Dirty) Python Wrapper for Pinterest#
 
 Author: *Raullen Chai <raullen@live.ca>*
 
