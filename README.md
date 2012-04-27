@@ -1,10 +1,10 @@
-#Pypinpinpin: An Unofficial (and Somewhat Dirty) Python Wrapper for Pinterest#
+#Pypinpinpin: An Unofficial (and Somewhat Dirty) Python API for Pinterest#
 
 Author: *Raullen Chai <raullen@live.ca>*
 
 ##Introduction##
 
-This (sketchy) library provides a pure python interface to intereact with Pinterest.com, which lets people organize and share all the beautiful things they find on the web. (read more: http://pinterest.com/about/)
+This (sketchy) library provides a pure python API to intereact with Pinterest.com, which lets people organize and share all the beautiful things they find on the web. (read more: http://pinterest.com/about/)
 
 ##Getting the code##
 
