@@ -1,8 +1,8 @@
-#Pypinpinpin: A (Homemade) Python Library for Pinterest API#
+#Pypinterest: A (Homemade) Python Library for Pinterest API#
 
 ##Introduction##
 
-This (homemade) library provides a pure python API to intereact with Pinterest.com, which lets people organize and share all the beautiful things they find on the web. (read more: http://pinterest.com/about/)
+This library provides a pure python API to intereact with Pinterest.com, which lets people organize and share all the beautiful things they find on the web. (read more: http://pinterest.com/about/)
 
 ##Get the code##
 
