@@ -85,7 +85,6 @@ class Client(object):
 
                 #test if the login was successful
                 for c in cj:
-                    print c
                     if (c.name == '_pinterest_sess') and len(c.value)>160:  #success login returns a longer string, but it is hard to tell exactly TODO
                         #print 'Login successful'
                         self.islogin = True
@@ -195,14 +194,42 @@ class Client(object):
             try:
                 data = urllib2.urlopen(self.base + r'/search/?q=' + keyword + '&page=' + str(page+1)).read()
             except (urllib2.URLError, urllib2.HTTPError, httplib.HTTPException), e:
-                break
+                continue
                 #raise pypinterestError('Error in searchpins():'+ str(e))
 
             _tmp_postids = list(set(re.findall(r'<div class="pin" data-id="\d*" ', data)))
             postids += [_tmp_postid.replace('<div class="pin" data-id="','').replace('" ','').strip() for _tmp_postid in _tmp_postids]
 
-        return postids
+        return list(set(postids))
 
+
+    """Get all pins, infinite scroll supported"""
+    def getallpins(self, category=None, from_page=1, to_page=1):
+        self.auth()         #limited pages are accessible by unregistered users
+        opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(self.cj))
+        opener.addheaders = [
+                        ("User-agent", self.useragent),
+                        ('Content-Type', 'application/x-www-form-urlencoded'),
+                        ("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
+                        ('Referer', 'http://pinterest.com/')]
+        
+        postids = list()
+        for page in xrange(from_page, to_page+1):
+            if category:
+                url = self.base.replace('https', 'http') + r'/all/?category=' + category +'&page=' + str(page)
+            else:
+                url = self.base.replace('https', 'http') + r'/all/?page=' + str(page)
+            try:
+                req = urllib2.Request(url)
+                data = opener.open(req).read()
+            except (urllib2.URLError, urllib2.HTTPError, httplib.HTTPException), e:
+                continue
+                #raise pypinterestError('Error in getallpins():'+ str(e))
+
+            _tmp_postids = list(set(re.findall(r'<div class="pin" data-id="\d*" ', data)))
+            postids += [_tmp_postid.replace('<div class="pin" data-id="','').replace('" ','').strip() for _tmp_postid in _tmp_postids]
+
+        return list(set(postids))
 
     """Read contents from a pin"""
     def readpin(self, pinid):
