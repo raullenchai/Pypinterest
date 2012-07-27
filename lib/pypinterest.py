@@ -15,7 +15,7 @@ class pypinterestError(Exception):
 
 
 
-"""Workaround for using DELETE with urllib2"""
+"""For using DELETE with urllib2"""
 class RequestWithMethod(urllib2.Request):
     def __init__(self, url, method, data=None, headers={},\
         origin_req_host=None, unverifiable=False):
@@ -40,7 +40,7 @@ class Client(object):
             self.islogin = False
             self.base = r'https://pinterest.com'
 
-    """Basic Authenticaiton"""
+    """Basic Authentication"""
     def auth(self):
         if self.islogin == False:
             url = self.base + r'/login/'
@@ -63,7 +63,7 @@ class Client(object):
                 try:
                     login_form = BeautifulSoup(opener.open(url).read())
                 except (urllib2.URLError, urllib2.HTTPError, httplib.HTTPException), e:
-                    raise pinpinpinError('Error in login(): ' + str(e))
+                    raise pypinterestError('Error in login(): ' + str(e))
 
                 csrf = login_form.find('input', attrs={'name': 'csrfmiddlewaretoken'}).attrMap
 
@@ -81,7 +81,7 @@ class Client(object):
                     req = urllib2.Request(url, login_data)
                     raw_html = opener.open(req).read()
                 except (urllib2.URLError, urllib2.HTTPError, httplib.HTTPException), e:
-                    raise pinpinpinError('Error in login(): ' + str(e))
+                    raise pypinterestError('Error in login(): ' + str(e))
 
                 #test if the login was successful
                 for c in cj:
@@ -95,7 +95,7 @@ class Client(object):
                         return
 
                 #print 'Login failed'
-                raise pinpinpinError('Error in login(): ' + str(e))
+                raise pypinterestError('Error in login(): ' + str(e))
                 return
         else:
             return
@@ -388,3 +388,25 @@ class Client(object):
             return None
 
         return status
+
+    """TODO Comment on a pin"""
+    def comment(self, pinid):
+        pass
+
+    """TODO Get a list of followers of a specified user"""
+    def getfollowers(self, username):
+        pass
+
+    """TODO Get a list of users that a specified user is following"""
+    def getfollowing(self, username):
+        pass
+
+    """TODO Follow a specified user"""
+    def follow(self, username):
+        pass
+
+    """TODO Unfollow a specified user"""
+    def unfollow(self, username):
+        pass
+
+
