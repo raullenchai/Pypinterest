@@ -18,6 +18,9 @@ if __name__ == '__main__':
 	#search for pins
 	print myclient.searchpins('football', 20)
 
+	#get all pins in the category
+	print myclient.getallpins('design', 1, 2)
+
 	#like a pin
 	print myclient.like('4011087138419093')
 

@@ -58,6 +58,10 @@ To search pins accoriding to a given keyword:
 
     >>> myclient.searchpins('keywords with spaces', 'number of pages required, say 10')
 
+To get all pins in a given category:
+
+    >>> myclient.getallpins('category', 1, 10)
+	
 To repin a post to an existed board:
 
     >>> myclient.repin('board number', 'pin ID', 'content')
