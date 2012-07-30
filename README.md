@@ -78,10 +78,11 @@ To read information from a pin:
     
     >>> myclient.readpin('pin ID')
 
-##Example##
-example0.py -- naive use of this library
-example1.py -- check how pins are stored/distributed in Pinterest's cache servers
+##Examples##
 
+example0.py -- naive use of this library
+
+example1.py -- check how pins are stored/distributed in Pinterest's cache servers
 
 ##License (MIT)##
 
