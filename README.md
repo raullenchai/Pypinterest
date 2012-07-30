@@ -2,7 +2,7 @@
 
 ##Introduction##
 
-This library provides a pure python API to intereact with Pinterest.com, which lets people organize and share all the beautiful things they find on the web. (read more: http://pinterest.com/about/)
+This library provides a pure python API to interact with Pinterest.com, which lets people organize and share all the beautiful things they find on the web. (read more: http://pinterest.com/about/)
 
 ##Get the code##
 
@@ -54,14 +54,14 @@ To delete a pin:
 
     >>> myclient.deletepin('pin ID')
 
-To search pins accoriding to a given keyword:
+To search pins according to a given keyword:
 
     >>> myclient.searchpins('keywords with spaces', 'number of pages required, say 10')
 
 To get all pins in a given category:
 
     >>> myclient.getallpins('category', 1, 10)
-	
+    
 To repin a post to an existed board:
 
     >>> myclient.repin('board number', 'pin ID', 'content')
@@ -79,7 +79,9 @@ To read information from a pin:
     >>> myclient.readpin('pin ID')
 
 ##Example##
-See example.py
+example0.py -- naive use of this library
+example1.py -- check how pins are stored/distributed in Pinterest's cache servers
+
 
 ##License (MIT)##
 
